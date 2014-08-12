@@ -1,6 +1,6 @@
 # Rack::Serverinfo
 
-TODO: Write a gem description
+This rack middleware shows the hostname of the app server, under which user the app is running and what kind of rails env the app has.
 
 ## Installation
 
@@ -10,17 +10,17 @@ Add this line to your application's Gemfile:
 gem 'rack-serverinfo'
 ```
 
-And then execute:
+In the application.rb add this:
 
-    $ bundle
+```ruby
+config.middleware.use Rack::Serverinfo
+```
 
-Or install it yourself as:
+Maybe you do not want it in production so add this:
 
-    $ gem install rack-serverinfo
-
-## Usage
-
-TODO: Write usage instructions here
+```ruby
+config.middleware.use Rack::Serverinfo unless Rails.env.production?
+```
 
 ## Contributing
 
