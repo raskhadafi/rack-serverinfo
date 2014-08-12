@@ -22,7 +22,7 @@ module Rack
     def server_info_text
       @server_info_text ||= [
         "Hostname: #{hostname}",
-        "User: #{user}",
+        "User: #{user.name}",
         "Rails-Env: #{rails_env}",
       ]
     end
@@ -43,7 +43,7 @@ module Rack
     end
 
     def user
-     @user ||= Etc.getlogin
+     @user ||= Etc.getpwuid(Process.uid)
     end
 
     def rails_env
