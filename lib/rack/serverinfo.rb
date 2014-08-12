@@ -17,15 +17,15 @@ module Rack
 
     def style
       @style ||= [
-        'position: absolute;'
-        'bottom: 10px;'
-        'right: 10px;'
-        'border: 4px solid red;'
-        'padding: 5px;'
-        'border-radius: 5px;'
-        'background-color: black;'
-        'opacity: 0.5;'
-        'color: white;'
+        'position: absolute;',
+        'bottom: 10px;',
+        'right: 10px;',
+        'border: 4px solid red;',
+        'padding: 5px;',
+        'border-radius: 5px;',
+        'background-color: black;',
+        'opacity: 0.5;',
+        'color: white;',
       ].join
     end
 
