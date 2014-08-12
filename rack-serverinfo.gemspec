@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "rack-serverinfo"
-  spec.version       = '0.0.2'
+  spec.version       = '0.0.3'
   spec.authors       = ["Roman Simecek"]
   spec.email         = ["roman@good2go.ch"]
   spec.summary       = %q{Show information of the app.}
