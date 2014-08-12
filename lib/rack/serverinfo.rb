@@ -6,6 +6,8 @@ module Rack
   class Serverinfo < Plastic
 
     def change_nokogiri_doc(doc)
+      return request.xhr?
+
       badge = doc.create_element 'div', style: style
 
       server_info_text.each do |info|
