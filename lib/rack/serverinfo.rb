@@ -1,19 +1,31 @@
 require 'rack-plastic'
+require 'etc'
 
 module Rack
 
   class Serverinfo < Plastic
 
     def change_nokogiri_doc(doc)
-      h1          = create_node(doc, "div", "Hostname: #{hostname}")
-      h1['style'] = style
+      badge = doc.create_element 'div', style: style
 
-      append_to_body(doc, h1)
+      server_info_text.each do |info|
+        badge.add_child(doc.create_element('p', info, style: 'margin: 0'))
+      end
+
+      append_to_body(doc, badge)
 
       doc
     end
 
     private
+
+    def server_info_text
+      @server_info_text ||= [
+        "Hostname: #{hostname}",
+        "User: #{user}",
+        "Rails-Env: #{rails_env}",
+      ]
+    end
 
     def style
       @style ||= [
@@ -26,7 +38,16 @@ module Rack
         'background-color: black;',
         'opacity: 0.5;',
         'color: white;',
+        'font-size: 10px;',
       ].join
+    end
+
+    def user
+     @user ||= Etc.getlogin
+    end
+
+    def rails_env
+      @rails_env ||= ENV['RAILS_ENV']
     end
 
     def hostname
