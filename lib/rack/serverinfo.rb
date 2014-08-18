@@ -6,7 +6,7 @@ module Rack
   class Serverinfo < Plastic
 
     def change_nokogiri_doc(doc)
-      return request.xhr?
+      return doc if request.xhr?
 
       badge = doc.create_element 'div', style: style
 
